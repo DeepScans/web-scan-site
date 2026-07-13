@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebScan AI - Умный помощник</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <button class="new-chat-btn" onclick="createNewChat()">
+                    <span>+</span> Новый чат
+                </button>
+            </div>
+            
+            <div class="chat-list" id="chatList">
+                <!-- Список чатов -->
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">👤</div>
+                    <div class="user-name">Пользователь</div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Основной контент -->
+        <main class="main-content">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-title" id="chatTitle">WebScan AI</div>
+                    <div class="chat-actions">
+                        <button class="action-btn" onclick="deleteCurrentChat()" title="Удалить чат">
+                            🗑️
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="messages-container" id="messagesContainer">
+                    <div class="welcome-message">
+                        <div class="welcome-icon">🤖</div>
+                        <h2>Добро пожаловать в WebScan AI</h2>
+                        <p>Я ваш интеллектуальный помощник с доступом к базе знаний и поиску в интернете.</p>
+                        <div class="suggestions">
+                            <button onclick="sendSuggestion('Что ты умеешь?')">Что ты умеешь?</button>
+                            <button onclick="sendSuggestion('Расскажи про Python')">Расскажи про Python</button>
+                            <button onclick="sendSuggestion('Как стать программистом?')">Как стать программистом?</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="Введите сообщение..."
+                            rows="1"
+                            onkeydown="handleKeyDown(event)"
+                        ></textarea>
+                        <button class="send-btn" onclick="sendMessage()" id="sendBtn">
+                            ➤
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
